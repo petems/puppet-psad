@@ -13,20 +13,20 @@ class psad::params {
   }
 
   case $::osfamily {
-    debian: {
+    'Debian': {
       $ipt_syslog_file = '/var/log/syslog'
-      $mailCmd = '/usr/bin/mail'
+      $mailcmd         = '/usr/bin/mail'
     }
 
-    redhat: {
+    'RedHat': {
       $ipt_syslog_file = '/var/log/messages'
-      $mailCmd = '/bin/mail'
+      $mailcmd         = '/bin/mail'
     }
 
     default: {
       crit('PSAD is only tested on Debian or Redhat families of linux - unpredictable results may occur.')
       $ipt_syslog_file = '/var/log/messages'
-      $mailCmd = '/bin/mail'
+      $mailcmd         = '/bin/mail'
     }
   }
 
